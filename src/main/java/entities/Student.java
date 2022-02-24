@@ -14,8 +14,21 @@ public class Student {
     @Column(name = "name", length = 100)
     private String name;
 
-    public Student(String name) {
+    @Column(name = "age")
+    private Integer age;
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Student(String name, Integer age) {
         this.name = name;
+        this.age = age;
+
     }
 
     public Student() {

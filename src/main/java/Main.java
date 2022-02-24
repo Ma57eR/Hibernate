@@ -1,8 +1,10 @@
 import entities.Student;
+import entities.Teacher;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,8 +14,17 @@ public class Main {
 
         entityManager.getTransaction().begin();
 
-        Student student = new Student("Emo");
+        Student student = new Student("Emo", 20);
+        Student second = new Student("Goshe", 40);
         entityManager.persist(student);
+        entityManager.persist(second);
+
+
+//        Student first = entityManager.find(Student.class, 1);
+//        entityManager.remove(first);
+
+        Teacher teacher = new Teacher("Petrusheva", "Eng", LocalDate.now());
+        entityManager.persist(teacher);
 
         entityManager.getTransaction().commit();
         entityManager.close();
